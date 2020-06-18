@@ -96,11 +96,10 @@ h1{
          </div>
          <div class="col-8">
          <div class="input-group mb-3">
-
-   <select class="form-control" id="exampleFormControlSelect2" name="selecttipo">
-      <option value="1">Portatil</option>
-      <option value="2">Escritorio</option>
-      <option value="3">Todo en Uno</option>     
+<select class="form-control" id="exampleFormControlSelect2" name="selecteps" required th:field="*{ep.id}">
+      <option value="0"disabled>Seleccione</option>
+      <option th:each="tipo : ${seguros}" th:value="${tipo.id}" th:text="${tipo.descripcion}"></option>
+   
     </select>
   </div>
          </div>
@@ -113,9 +112,10 @@ h1{
          <div class="input-group mb-3">
 
    <select class="form-control" id="exampleFormControlSelect2" name="selecttipo">
-      <option value="1">Portatil</option>
-      <option value="2">Escritorio</option>
-      <option value="3">Todo en Uno</option>     
+      <option value="1">M</option>
+      <option value="2">F</option>
+      <option value="3">Otro</option>
+  
     </select>
   </div>
          </div>
@@ -137,10 +137,10 @@ h1{
          <div class="col-8">
          <div class="input-group mb-3">
 
-   <select class="form-control" id="exampleFormControlSelect2" name="selecttipo">
-      <option value="1">Portatil</option>
-      <option value="2">Escritorio</option>
-      <option value="3">Todo en Uno</option>     
+<select class="form-control" id="exampleFormControlSelect2" name="selectmodalidad" required th:field="*{modalidadBean.id}">
+      <option value="0"disabled>Seleccione</option>
+      <option th:each="tipo : ${modalidades}" th:value="${tipo.id}" th:text="${tipo.descripcion}"></option>
+   
     </select>
   </div>
          </div>

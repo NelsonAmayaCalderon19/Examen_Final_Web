@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import web.entities.Computador;
+import web.entities.*;
 import web.entities.Usuario;
-import web.repository.UsuarioRepository;
+import web.repository.*;
 import web.util.PasswordGenerator;
 import web.util.ZXingHelper;
 
@@ -31,10 +31,21 @@ public class loginController {
 
 	@Autowired
 	TipoRepository tiporepository;
+	
+	@Autowired
+	EpsRepository epsrepository;
+	
+	@Autowired
+	ModalidadRepository modalidadrepository;
+	
 	//@Autowired
 	//ComputadorRepository computadorrepository;
-	
-	@PostMapping({"/"})
+	@GetMapping({"/"})
+    public String perfil(Model modelo) {
+       // modelo.addAttribute("computador", computadorrepository.findAll());
+        return "menu";
+    }
+	@PostMapping({"/login"})
     public String home(HttpServletRequest request, Model modelo, Model imprimir) {
 		PasswordGenerator p = new PasswordGenerator();
 		Optional<Usuario> empleadoOpt = usuariorepository.findById(Integer.parseInt(request.getParameter("username")));
@@ -63,9 +74,12 @@ public class loginController {
 	
 	@GetMapping({"/infoBasica"})
     public String infoBasica(Model modelo) {
-		modelo.addAttribute("persona", new Usuario());
+		modelo.addAttribute("persona", new Basico());
 		modelo.addAttribute("tipos", tiporepository.findAll());
+		modelo.addAttribute("seguros", epsrepository.findAll());
+		modelo.addAttribute("modalidades", modalidadrepository.findAll());
         return "infoBasica";
+        
     }
 	
 	@GetMapping({"/infoPersonas"})
