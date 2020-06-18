@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro-Ingreso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   <link rel="stylesheet" type="text/css" href="css/index_styles.css">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/512/30/30537.png" />
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<style>
+h1{
+         font-family: 'Kaushan Script', cursive;
+         }
+</style>
+</head>
+<body>
+ <div class="container col-12">
+    <div class="row justify-content-center">   	
+    	<div class="col-12">
+ <h1 class="text-center text-warning"><i class="fa fa-calendar-check"></i>  Registro</h1>
+       </div>          
+         <div class="col-6">
+        <div class="col-12" >
+        <form style="padding-top: 25px;"  id="miForm" th:action="@{/compu/registrarComputadora}"  th:method="POST">
+         <div class="row col-12">
+         <div class="col-12">
+              <h4>Presenta alguno de los Siguientes Sintomas</h4>
+         </div>
+        
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Tos Seca</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="tos" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Malestar General</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="malestar" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Fatiga</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="fatiga" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Secreción Nasal</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="nasal" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Dolor de Garganta</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="garganta" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-8">
+              <h5>Dificultad Respiratoria</h5>
+         </div>
+         <div class="col-4">
+         <div class="input-group mb-3">
+<input id="toggle-demo" type="checkbox" name="respirar" data-toggle="toggle" data-on="Si" data-off="No" data-onstyle="success" data-offstyle="danger">
+  </div>
+         </div>
+         </div>
+         <div class="row col-12">
+         <div class="col-6">
+              <h5>Temperatura</h5>
+         </div>
+         <div class="col-6">
+         <div class="input-group mb-3">
+
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-thermometer-empty"></i></span>
+    </div>
+    <input type="number" class="form-control" id="temperatura" name="txttemperatura">
+  </div>
+         </div>
+         </div>
+  
+    <div class="form-group">
+    <!-- <input type="hidden" th:value="${#authentication.getPrincipal().getUsername()}" name="user"  style="color: #00D6D6;">
+    -->
+    </div>
+    <input class=" btn btn-block btn-success" type="submit" value="Actualizar" id="agregar" name="accion"/>
+              
+               <br><br>
+               </form>
+        </div>
+        </div>      	
+    	</div>
+    </div>
+
+</body>
+</html>
