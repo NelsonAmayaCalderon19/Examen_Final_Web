@@ -24,24 +24,24 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center"  >
-					<div class="brand_logo_container" th:if="${instituto.equalsIgnoreCase('ufps')}" >
+					<div class="brand_logo_container" th:if="${empresa.equalsIgnoreCase('ufps')}" >
 					
 						<img src="https://ww2.ufps.edu.co/public/archivos/elementos_corporativos/logoufps.png" class="brand_logo" alt="Logo">
 					</div>
-					<div class="brand_logo_container" th:if="${instituto.equalsIgnoreCase('colport')}" >
+					<div class="brand_logo_container" th:if="${empresa.equalsIgnoreCase('colport')}" >
 						<img  src="https://colmunbto.edu.co/web/wp-content/uploads/2019/05/escudo-300x300.png" class="brand_logo" alt="Logo">
 					</div>
-					<div class="brand_logo_container" th:unless="${instituto.equalsIgnoreCase('colport')||instituto.equalsIgnoreCase('ufps')}" >
+					<div class="brand_logo_container" th:unless="${empresa.equalsIgnoreCase('colport')||empresa.equalsIgnoreCase('ufps')}" >
 						<img  src="https://1.bp.blogspot.com/-2F5X4cCOK8c/U-0hU9vlrJI/AAAAAAABl-E/9uH5N8M8B-A/s1600/1.JPG" class="brand_logo" alt="Logo">
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form style="padding-top: 25px;" th:action="@{/iniciar}" th:method="post">
+					<form style="padding-top: 25px;" th:action="@{/login}" th:method="post">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="username" id="cedula" class="form-control input_user" value="" placeholder="Codigo" autocomplete="off">
+							<input type="text" name="username" id="usuario" class="form-control input_user" value="" placeholder="Codigo" autocomplete="off">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">

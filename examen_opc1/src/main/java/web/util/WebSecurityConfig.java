@@ -19,9 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(resources).permitAll().antMatchers("/", "/index", "/iniciar","/ufps","/colport","/perfil","/perfil/**","/menu","/menu/**" ).permitAll()
-                //.antMatchers("/home/**","/index","/index/**","/home","/cliente","/cliente/**","/empleado","/empleado/**","/inventario","/inventario/**").hasAuthority("ADMIN")
-               // .anyRequest().authenticated()
+        http.authorizeRequests().antMatchers(resources).permitAll().antMatchers("/", "/index", "/iniciar","/ufps","/colport","/perfil","/perfil/**","/menu","/menu/**","/login","/login/**" ).permitAll()
+                .antMatchers("/home/**","/index","/index/**","/home","/cliente","/cliente/**","/empleado","/empleado/**","/inventario","/inventario/**").hasAuthority("ADMIN")
+               .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/iniciar").permitAll().defaultSuccessUrl("/perfil/")

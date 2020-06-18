@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
 
-
+import web.entities.Usuario;
+import web.repository.UsuarioRepository;
 import web.util.PasswordGenerator;
 
 import java.util.Optional;
@@ -21,24 +22,19 @@ import org.springframework.ui.Model;
 @Controller
 
 public class ViewController {
-
-	//@Autowired
-	//EmpleadoRepository empleadorepository;
-
-//	@Autowired
-	//ComputadorRepository computadorrepository;
+	@Autowired
+	UsuarioRepository usuariorepository;
 
 	@GetMapping("/{nombre}")
 	public String vista(Model modelo,@PathVariable String nombre){	
-		modelo.addAttribute("instituto", nombre);
+		modelo.addAttribute("empresa", nombre);
 
 		return "login";
 	}
 	
 	@GetMapping("/listado")
 	public String listado(Model modelo, Model model){	
-		//modelo.addAttribute("computador", computadorrepository.findAll());
-		//model.addAttribute("empleado", empleadorepository.findAll());
+
 		return "home";
 	}
 	
@@ -49,7 +45,7 @@ public class ViewController {
 	
 	@GetMapping({"/iniciar"})
     public String iniciarSesion(Model modelo) {
-		modelo.addAttribute("instituto", "null");
+		modelo.addAttribute("empresa", "null");
         return "login";
     }
 
@@ -82,28 +78,7 @@ public class ViewController {
 		return "Adios con Spring Boot por GET "+ cliente.getNombre();
 		}
 	}
+	*/
 	
-	@PostMapping({"/home"})
-    public String home(HttpServletRequest request, Model modelo, Model imprimir) {
-		PasswordGenerator p = new PasswordGenerator();
-		Optional<Empleado> empleadoOpt = empleadorepository.findById(Integer.parseInt(request.getParameter("cedula")));
-		if(!empleadoOpt.isPresent()) {
-			return "index";
-		}else {
-		Empleado empleado = empleadoOpt.get();
-		String dato = p.encriptador(request.getParameter("clave"));
-		System.out.println(dato);
-		//JOptionPane.showMessageDialog(null, dato);
-		if(empleado.getClave().equalsIgnoreCase(request.getParameter("clave"))){
-			modelo.addAttribute("empleado", empleado.getNombre());
-			imprimir.addAttribute("computador", computadorrepository.findAll());
-		return "home";
-		
-	}else {
-		return "index";
-		}
-	}
-		       
-    }*/
 	
 }

@@ -1,7 +1,9 @@
 package web.controller;
 
 import java.io.OutputStream;
+import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import web.entities.Computador;
+import web.entities.Usuario;
+import web.repository.UsuarioRepository;
+import web.util.PasswordGenerator;
 import web.util.ZXingHelper;
 
 //import web.repository.ComputadorRepository;
@@ -19,14 +26,33 @@ import web.util.ZXingHelper;
 @Controller
 @RequestMapping({ "/perfil/" })
 public class loginController {
+	@Autowired
+	UsuarioRepository usuariorepository;
 
+	@Autowired
+	TipoRepository tiporepository;
 	//@Autowired
 	//ComputadorRepository computadorrepository;
 	
-	@GetMapping({"/"})
-    public String inicio(Model modelo) {
-       // modelo.addAttribute("computador", computadorrepository.findAll());
-        return "menu";
+	@PostMapping({"/"})
+    public String home(HttpServletRequest request, Model modelo, Model imprimir) {
+		PasswordGenerator p = new PasswordGenerator();
+		Optional<Usuario> empleadoOpt = usuariorepository.findById(Integer.parseInt(request.getParameter("username")));
+		if(!empleadoOpt.isPresent()) {
+			return "redirect:/iniciar";
+		}else {
+		Usuario empleado = empleadoOpt.get();
+		//JOptionPane.showMessageDialog(null, dato);
+		if(empleado.getClave().equalsIgnoreCase(request.getParameter("password"))){
+			//modelo.addAttribute("usuario", empleado.getNombre());
+			//imprimir.addAttribute("computador", computadorrepository.findAll());
+		return "menu";
+		
+	}else {
+		return "redirect:/iniciar";
+		}
+	}
+		       
     }
 	
 	@GetMapping({"/ingresoQR/{codigo}"})
@@ -37,7 +63,8 @@ public class loginController {
 	
 	@GetMapping({"/infoBasica"})
     public String infoBasica(Model modelo) {
-		//modelo.addAttribute("estudiante", new Estudiante());
+		modelo.addAttribute("persona", new Usuario());
+		modelo.addAttribute("tipos", tiporepository.findAll());
         return "infoBasica";
     }
 	

@@ -12,24 +12,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
+import web.repository.*;
+import web.entities.*;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    //@Autowired
-    //EmpleadoRepository usuarioRepository;
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
 	public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
-	    // Empleado appUser =  usuarioRepository.findById(Integer.parseInt(user)).orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
+	     Usuario appUser =  usuarioRepository.findById(Integer.parseInt(user)).orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
 
 	    List<GrantedAuthority> roles = new ArrayList<>();
-	    GrantedAuthority authority = new SimpleGrantedAuthority("ADMIN");
+	    GrantedAuthority authority = new SimpleGrantedAuthority("Usuario");
 	    roles.add(authority);
-	    //UserDetails usuario = (UserDetails) new User(String.valueOf(appUser.getCedula()), appUser.getClave(), roles);
-	   // System.out.println(usuario);
-	     //    return usuario;
-	    return null;
+	    UserDetails usuario = (UserDetails) new User(String.valueOf(appUser.getId()), appUser.getClave(), roles);
+	   System.out.println(usuario);
+	   return usuario;
+	
 	}
 }
     

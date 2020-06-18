@@ -33,7 +33,7 @@ h1{
        </div>          
          <div class="col-6">
         <div class="col-12" >
-        <form style="padding-top: 25px;"  id="miForm" th:action="@{/infoBasica/registrarEstudiante}" th:object="${infoBasica}"   th:method="POST">
+        <form style="padding-top: 25px;"  id="miForm" th:action="@{/infoBasica/registrarEstudiante}" th:object="${persona}"   th:method="POST">
          <div class="row col-12">
          <div class="col-4">
               <h4>Documento</h4>
@@ -44,7 +44,7 @@ h1{
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card"></i></span>
     </div>
-    <input type="text" class="form-control" id="documento" th:field="*{documento}" name="txtdocumento" required="" placeholder="Documento">
+    <input type="text" class="form-control" id="documento"  name="txtdocumento" required="" placeholder="Documento">
   </div>
          </div>
          </div>
@@ -58,7 +58,7 @@ h1{
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
     </div>
-    <input type="text" class="form-control" id="nombre" th:field="*{nombre}" name="txtnombre" required="" placeholder="Nombre">
+    <input type="text" class="form-control" id="nombre" name="txtnombre" required="" placeholder="Nombre">
   </div>
          </div>
          </div>
@@ -72,7 +72,7 @@ h1{
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
     </div>
-    <input type="date" class="form-control" th:field="*{fecha}" id="fecha" name="txtfecha">
+    <input type="date" class="form-control"  id="fecha" name="txtfecha">
   </div>
          </div>
          </div>
@@ -82,11 +82,11 @@ h1{
          </div>
          <div class="col-8">
          <div class="form-group mb-3">
-    <!--<select class="form-control" id="exampleFormControlSelect2" name="selecttipo" required th:field="*{tipoBean.id}">
+    <select class="form-control" id="exampleFormControlSelect2" name="selecttipo" required th:field="*{tipoBean.id}">
       <option value="0"disabled>Seleccione</option>
       <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.descripcion}"></option>
    
-    </select>-->
+    </select>
   </div>
          </div>
          </div>
